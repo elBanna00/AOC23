@@ -1,15 +1,27 @@
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.io.IOException;
+import java.util.List;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        String filePath = "./input.txt";
+        try {
+            // Read all lines from the file
+            List<String> lines = Files.readAllLines(Paths.get(filePath));
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+
+            String[] linesArray = lines.toArray(new String[0]);
+            // Convert the List to an Array
+            for (String line : linesArray) {
+                System.out.println(line);
+            }
+            Day1 d = new Day1();
+            System.out.println(d.part1(linesArray));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         }
     }
-}
