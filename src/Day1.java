@@ -58,33 +58,39 @@ public class Day1 {
                     if (firstdigit == -1) {
                         firstdigit = Character.getNumericValue(c);
                     }
-                } else if (i + 2 < line.length()) {
-                    String str = line.substring(i, i + 2);
-                    if (dict.containsKey(str)) {
-                        lastdigit = dict.get(str);
-                        if (firstdigit == -1) {
-                            firstdigit = dict.get(str);
-                        }
-                    }
-                } else if (i + 3 < line.length()) {
+                } if (i + 2 < line.length()) {
                     String str = line.substring(i, i + 3);
                     if (dict.containsKey(str)) {
                         lastdigit = dict.get(str);
                         if (firstdigit == -1) {
                             firstdigit = dict.get(str);
                         }
+                        continue;
                     }
-                } else if (i + 4 < line.length()) {
-                    String str = line.substring(i, i + 4);
+                } if (i + 3 < line.length()) {
+                    String str = line.substring(i  , i + 4);
                     if (dict.containsKey(str)) {
                         lastdigit = dict.get(str);
                         if (firstdigit == -1) {
                             firstdigit = dict.get(str);
                         }
+                        continue;
+                    }
+
+                } if (i + 4 < line.length()) {
+                    String str = line.substring(i , i + 5);
+                    if (dict.containsKey(str)) {
+                        lastdigit = dict.get(str);
+                        if (firstdigit == -1) {
+                            firstdigit = dict.get(str);
+                        }
+                    continue;
                     }
                 }
+                System.out.println(i + 3 < line.length());
             }
             sum += firstdigit * 10 + lastdigit;
+            System.out.println(firstdigit*10 + lastdigit);
         }
         return sum;
 
