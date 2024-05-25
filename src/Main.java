@@ -19,8 +19,11 @@ public class Main {
             for (String line : linesArray) {
                 System.out.println(line);
             }
-            Day1 d = new Day1();
-            System.out.println(d.part2(linesArray));
+//            Day1 d = new Day1();
+//            System.out.println(d.part2(linesArray));
+           Day2 d = new Day2();
+            System.out.println(d.part1(linesArray));
+
 
         } catch (IOException e) {
             e.printStackTrace();
