@@ -28,13 +28,37 @@ public class Day2 {
                 return isValid;
             }
 
-            }
+        }
 
         return isValid;
     }
 
-    public int part1(String[] str_arr) {
+    private int getPowerSet(String game)
+    {   
+        Map<String, Integer> powerSet = new Hashtable<>() {
+            {
+                put("red", 1);
+                put("green", 1);
+                put("blue", 1);
+            }
+        };
+        String[] scoreArr = game.split(" ");
 
+        for(int i = 1; i < scoreArr.length; i+=2){
+            String color = scoreArr[i].substring(0,scoreArr[i].length()-1);
+
+            if(!powerSet.containsKey(color)) color = scoreArr[i];
+
+            int score = Integer.parseInt(scoreArr[i-1]);
+
+            if(score > powerSet.get(color))
+                powerSet.put(color, score);           
+        }
+        int result = powerSet.get("red") * powerSet.get("green") * powerSet.get("blue");
+        return result;
+    }
+
+    public int part1(String[] str_arr) {
 
         int sum = 0;
         for (String line : str_arr){
@@ -44,4 +68,15 @@ public class Day2 {
         }
         return  sum;
     }
+
+    public int part2(String[] str_arr){
+        int sum = 0;
+        for (String line : str_arr)
+        {
+            //System.out.println("[Debugging] Process  ")
+            sum += getPowerSet(line.substring(line.indexOf(':')+2));
+        }
+        return sum;
+    }
+
 }

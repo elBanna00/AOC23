@@ -21,8 +21,8 @@ public class Main {
             }
 //            Day1 d = new Day1();
 //            System.out.println(d.part2(linesArray));
-           Day2 d = new Day2();
-            System.out.println(d.part1(linesArray));
+            Day2 d = new Day2();
+            System.out.println(d.part2(linesArray));
 
 
         } catch (IOException e) {
